@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+.red-hat-display-title {
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.embla {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 10px;
+}
