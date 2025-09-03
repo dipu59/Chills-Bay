@@ -1,8 +1,14 @@
 import React from 'react'
 
+import Footer from './common/footer';
+import Navbar from './common/navbar';
+
+
 function App() {
   return (
     <div className="max-w-[1440px] w-full mx-auto overflow-hidden">
+      <Navbar />
+      <Footer />
     </div>
   );
 }

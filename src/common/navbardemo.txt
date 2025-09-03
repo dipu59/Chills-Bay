@@ -1,0 +1,278 @@
+import React, { useState } from "react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ShoppingCart,
+  User,
+  Phone,
+  Utensils,
+  Coffee,
+  Calendar,
+  MapPin,
+  Users,
+  Settings,
+  LogOut,
+  Home,
+} from "lucide-react";
+import { Button } from "@mui/material";
+
+const ChillBayNavbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState({});
+
+  // Menu data
+  const menuItems = [
+    {
+      id: "eat-drink",
+      label: "Eat & Drink",
+      type: "none",
+      items: [
+        { label: "Restaurants", icon: <Utensils size={18} /> },
+        { label: "Bars", icon: <Coffee size={18} /> },
+        { label: "Cafes", icon: <Coffee size={18} /> },
+        { label: "Food Trucks", icon: <Utensils size={18} /> },
+      ],
+    },
+    {
+      id: "club",
+      label: "Club",
+      type: "button-dropdown",
+      style: "primary",
+      items: [
+        { label: "My Profile", icon: <User size={18} /> },
+        { label: "My History", icon: <Calendar size={18} /> },
+        { label: "Sign Out", icon: <LogOut size={18} /> },
+      ],
+    },
+    {
+      id: "things-to-do",
+      label: "Things to do",
+      type: "dropdown",
+      items: [
+        { label: "Water Sports", icon: <MapPin size={18} /> },
+        { label: "Parties", icon: <Calendar size={18} /> },
+        { label: "Outdoors", icon: <MapPin size={18} /> },
+        { label: "Rentals", icon: <Users size={18} /> },
+      ],
+    },
+  ];
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const toggleDropdown = (menuId) => {
+    setActiveDropdown(activeDropdown === menuId ? null : menuId);
+  };
+
+  const toggleMobileSubmenu = (menuId) => {
+    setMobileSubmenuOpen((prev) => ({
+      ...prev,
+      [menuId]: !prev[menuId],
+    }));
+  };
+
+  const DropdownMenu = ({ menu, isOpen }) => (
+    <div
+      className={`absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border z-50 ${
+        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+      } transition-all duration-200`}
+    >
+      <div className="py-2">
+        {menu.items.map((item, index) => (
+          <button
+            key={index}
+            className="w-full flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <span className="text-gray-400 mr-3">{item.icon}</span>
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="bg-white">
+      {/* Navigation Bar */}
+      <nav className="bg-white shadow-sm sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="flex items-center space-x-1">
+                <span className="text-2xl font-bold text-blue-500">Chill</span>
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span className="text-2xl font-bold text-gray-800">Bay</span>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6">
+              {menuItems.map((menu) => (
+                <div key={menu.id} className="relative">
+                  <button
+                    onClick={() => toggleDropdown(menu.id)}
+                    className={`flex items-center space-x-1 px-4 py-2 text-sm font-medium transition-colors rounded-full ${
+                      menu.style === "primary"
+                        ? "bg-blue-500 text-white hover:bg-blue-600"
+                        : "text-gray-700 hover:text-blue-600"
+                    }`}
+                  >
+                    <span>{menu.label}</span>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${
+                        activeDropdown === menu.id ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <DropdownMenu
+                    menu={menu}
+                    isOpen={activeDropdown === menu.id}
+                  />
+                </div>
+              ))}
+
+              {/* Cart Icon */}
+              <button className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors">
+                <ShoppingCart size={20} />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  2
+                </span>
+              </button>
+
+              {/* Account Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => toggleDropdown("account")}
+                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  <User size={18} />
+                  <span className="text-sm font-medium">Account</span>
+                </button>
+                <div
+                  className={`absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50 ${
+                    activeDropdown === "account"
+                      ? "opacity-100 visible"
+                      : "opacity-0 invisible"
+                  } transition-all duration-200`}
+                >
+                  <div className="py-2">
+                    <button className="w-full flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                      <User size={16} className="mr-3 text-gray-400" />
+                      My Profile
+                    </button>
+                    <button className="w-full flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                      <ShoppingCart size={16} className="mr-3 text-gray-400" />
+                      My Orders
+                    </button>
+                    <button className="w-full flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                      <Settings size={16} className="mr-3 text-gray-400" />
+                      Settings
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Button */}
+              <Button
+                variant="contained"
+                size="small"
+                className="!bg-[#0E8BFF] !w-[130px] !h-[36px] !text-[12px] hover:bg-blue-600 text-white py-2 rounded-full  !font-semibold transition-colors"
+              >
+                Contact Now
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center space-x-4">
+              <button className="relative p-2 text-gray-700">
+                <ShoppingCart size={20} />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  2
+                </span>
+              </button>
+              <button
+                onClick={toggleMobileMenu}
+                className="p-2 text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div
+          className={`md:hidden ${
+            mobileMenuOpen ? "block" : "hidden"
+          } bg-white border-t border-gray-200`}
+        >
+          <div className="px-4 py-4 space-y-2">
+            {menuItems.map((menu) => (
+              <div key={menu.id}>
+                <button
+                  onClick={() => toggleMobileSubmenu(menu.id)}
+                  className={`w-full flex items-center justify-between px-4 py-3 text-left rounded-lg transition-colors ${
+                    menu.style === "primary"
+                      ? "bg-blue-50 text-blue-600"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  <span className="font-medium">{menu.label}</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${
+                      mobileSubmenuOpen[menu.id] ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {mobileSubmenuOpen[menu.id] && (
+                  <div className="mt-2 ml-4 space-y-1">
+                    {menu.items.map((item, index) => (
+                      <button
+                        key={index}
+                        className="w-full flex items-center px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md"
+                      >
+                        <span className="text-gray-400 mr-3">{item.icon}</span>
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            <div className="border-t border-gray-200 pt-4 mt-4">
+              <button className="w-full flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg">
+                <User size={18} className="mr-3 text-gray-400" />
+                Account
+              </button>
+              <Button
+                size="large"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-3 rounded-lg font-medium mt-2 flex items-center justify-center"
+              >
+                <Phone size={18} className="mr-2" />
+                Contact Now
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Click outside to close dropdowns */}
+      {activeDropdown && (
+        <div
+          className="fixed inset-0 z-30"
+          onClick={() => setActiveDropdown(null)}
+        ></div>
+      )}
+    </div>
+  );
+};
+
+export default ChillBayNavbar;

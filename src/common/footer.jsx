@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 
 function Footer() {
   return (
-    <footer className="flex flex-col md:flex-row md:justify-around justify-center mx-auto items-center md:items-start pt-[80px] bg-[#FFFFFF] max-w-[1440px] w-full ">
+    <footer className="flex flex-col md:pb-20 md:flex-row md:justify-around justify-center mx-auto items-center md:items-start pt-[80px] bg-[#FFFFFF] max-w-[1440px] w-full ">
       <div className="md:max-w-[209px] max-w-[327px]  w-full  ">
         <img
           className="w-[166px] h-[78px] mb-[8px]"
