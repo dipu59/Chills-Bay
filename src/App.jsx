@@ -1,12 +1,8 @@
-import { Button } from '@mui/material';
 import React from 'react'
-import Title from './common/title';
-import EventSlider from './common/carosol';
 
 function App() {
   return (
     <div className="max-w-[1440px] w-full mx-auto overflow-hidden">
-      {/* <EventSlider events={events} /> */}
     </div>
   );
 }
