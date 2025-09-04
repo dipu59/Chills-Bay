@@ -43,7 +43,7 @@ export default function BasicMenu({
 
         <ChevronUp
           className={cn(
-            ` text-[#0E8BFF] ml-1 size-5 ${open ? "rotate-180" : "rotate-0"}`,
+            ` text-[#0E8BFF] ml-1  size-5 ${open ? "rotate-180" : "rotate-0"}`,
            
           )}
         />

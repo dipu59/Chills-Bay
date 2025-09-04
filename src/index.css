@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+*{
+ 
+  box-sizing: border-box;
+}
+
 .red-hat-display-title {
   font-family: "Red Hat Display", sans-serif;
   font-optical-sizing: auto;

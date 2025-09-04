@@ -10,7 +10,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="max-w-[1240px] flex justify-between items-center w-full h-[72px] my-[14px] mx-auto bg-white mb-10 px-10 md:px-0 relative">
+    <div className="max-w-[1240px] flex justify-between items-center w-full h-[72px] my-[14px] mx-auto bg-white  px-10 md:px-0 relative">
       <div>
         <img src="/home/logo.png" alt="logo" />
       </div>
@@ -77,7 +77,7 @@ function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-14 left-0 w-full bg-[#F5FAFF] shadow-lg flex flex-col items-start px-10 text-[24px] space-y-5 py-7 z-50 mt-12 text-[#26395C] font-medium"
+              className="absolute top-9 left-0 w-full bg-[#F5FAFF] shadow-lg flex flex-col items-start px-10 text-[24px] space-y-5 py-7 z-50 mt-12 text-[#26395C] font-medium"
             >
               <a href="/eat&drink">Eat & Drink</a>
               <a href="/events">Events</a>

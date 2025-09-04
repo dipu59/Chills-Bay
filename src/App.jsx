@@ -2,12 +2,14 @@ import React from 'react'
 
 import Footer from './common/footer';
 import Navbar from './common/navbar';
+import AutoCarousel from './components/hero';
 
 
 function App() {
   return (
     <div className="max-w-[1440px] w-full mx-auto overflow-hidden">
       <Navbar />
+      <AutoCarousel/>
       <Footer />
     </div>
   );
