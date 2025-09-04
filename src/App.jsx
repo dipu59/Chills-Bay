@@ -5,6 +5,7 @@ import Navbar from './common/navbar';
 import AutoCarousel from './components/hero';
 import Mood from './components/moodfor';
 import TopThings from './components/topThings';
+import UseChillbay from './components/useChillbay';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <AutoCarousel/>
       <Mood/>
       <TopThings/>
+      <UseChillbay/>
       <Footer />
     </div>
   );
