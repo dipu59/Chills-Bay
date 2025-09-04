@@ -3,6 +3,7 @@ import React from 'react'
 import Footer from './common/footer';
 import Navbar from './common/navbar';
 import AutoCarousel from './components/hero';
+import Mood from './components/moodfor';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="max-w-[1440px] w-full mx-auto overflow-hidden">
       <Navbar />
       <AutoCarousel/>
+      <Mood/>
       <Footer />
     </div>
   );
