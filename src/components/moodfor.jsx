@@ -1,5 +1,5 @@
-import React from 'react'
-import Title from '../common/title';
+import React from "react";
+import Title from "../common/title";
 
 function Mood() {
   const item = [

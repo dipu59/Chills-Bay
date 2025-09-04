@@ -4,6 +4,7 @@ import Footer from './common/footer';
 import Navbar from './common/navbar';
 import AutoCarousel from './components/hero';
 import Mood from './components/moodfor';
+import TopThings from './components/topThings';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <AutoCarousel/>
       <Mood/>
+      <TopThings/>
       <Footer />
     </div>
   );
